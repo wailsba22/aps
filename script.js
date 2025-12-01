@@ -152,13 +152,27 @@ function renderCategories() {
             currentCategory = card.dataset.category;
             currentPage = 1;
             filterByCategory();
-            // Smoothly scroll to the APIs section after choosing a topic/category
-            const apisSection = document.getElementById('apis');
-            if (apisSection) {
-                apisSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+            setTimeout(() => {
+                const apisSection = document.getElementById('apis');
+                if (apisSection) {
+                    apisSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 100);
         });
     });
+// Nav link scroll for Categories
+document.addEventListener('DOMContentLoaded', () => {
+    const navCategories = document.querySelector('a.nav-link[href="#categories"]');
+    if (navCategories) {
+        navCategories.addEventListener('click', function(e) {
+            e.preventDefault();
+            const catSection = document.getElementById('categories');
+            if (catSection) {
+                catSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    }
+});
 }
 
 // ============================================
