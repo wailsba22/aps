@@ -152,6 +152,11 @@ function renderCategories() {
             currentCategory = card.dataset.category;
             currentPage = 1;
             filterByCategory();
+            // Smoothly scroll to the APIs section after choosing a topic/category
+            const apisSection = document.getElementById('apis');
+            if (apisSection) {
+                apisSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         });
     });
 }
