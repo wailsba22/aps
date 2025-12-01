@@ -1,0 +1,8 @@
+{
+  "name": "API Explorer",
+  "short_name": "APIs",
+  "icons": [],
+  "theme_color": "#0B1020",
+  "background_color": "#0B1020",
+  "display": "standalone"
+}
