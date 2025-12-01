@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public APIs Explorer - Discover & Use Free APIs</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="scroll-button.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="logo-text">API Explorer</span>
+            </div>
+            <nav class="nav">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#categories" class="nav-link">Categories</a>
+                <a href="#about" class="nav-link">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Discover <span class="gradient-text">Free Public APIs</span>
+                    <br>for Your Next Project
+                </h1>
+                <p class="hero-subtitle">
+                    Explore hundreds of free APIs across 50+ categories. Find the perfect API for your application with detailed usage examples and integration ideas.
+                </p>
+                <div class="search-container">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search APIs by name, category, or description...">
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="1400">0</span>
+                        <span class="stat-label">APIs Available</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="50">0</span>
+                        <span class="stat-label">Categories</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="100">0</span>
+                        <span class="stat-label">% Free</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-header">
+                <h2 class="section-title">Browse by Category</h2>
+                <div class="filter-controls">
+                    <button class="filter-btn active" data-filter="all">All Categories</button>
+                    <div class="auth-filter">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="authFilter">
+                            <span>No Auth Required</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="httpsFilter">
+                            <span>HTTPS Only</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="corsFilter">
+                            <span>CORS Enabled</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="categories-grid" id="categoriesGrid">
+                <!-- Categories will be dynamically loaded -->
+            </div>
+        </div>
+    </section>
+
+    <!-- APIs Grid Section -->
+    <section class="apis-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Available APIs</h2>
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="grid">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="3" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                            <rect x="14" y="3" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                            <rect x="3" y="14" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                            <rect x="14" y="14" width="7" height="7" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </button>
+                    <button class="view-btn" data-view="list">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="3" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="apis-grid" id="apisGrid">
+                <!-- APIs will be dynamically loaded -->
+            </div>
+            <div class="load-more-container">
+                <button class="load-more-btn" id="loadMoreBtn">Load More APIs</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2 class="section-title">About This Project</h2>
+            <div class="about-content">
+                <div class="about-card">
+                    <div class="about-icon">📚</div>
+                    <h3>Comprehensive Collection</h3>
+                    <p>Access to over 1,400 public APIs across 50+ categories including weather, finance, social media, and more.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">🔍</div>
+                    <h3>Easy Discovery</h3>
+                    <p>Search and filter APIs by category, authentication requirements, HTTPS support, and CORS availability.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">💡</div>
+                    <h3>Usage Examples</h3>
+                    <p>Each API includes detailed descriptions, usage examples, and app ideas to kickstart your development.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">🚀</div>
+                    <h3>Free to Use</h3>
+                    <p>All APIs listed are publicly available and free to use, perfect for learning and building projects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for API Details -->
+    <div class="modal" id="apiModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <div id="modalBody">
+                <!-- Modal content will be dynamically loaded -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>API Explorer</h3>
+                    <p>Your gateway to discovering and using free public APIs for your next project.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a href="https://github.com/public-apis/public-apis" target="_blank">GitHub Repository</a>
+                    <a href="#categories">Browse APIs</a>
+                    <a href="#about">About</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <a href="https://github.com/public-apis/public-apis/blob/master/CONTRIBUTING.md" target="_blank">Contributing</a>
+                    <a href="https://github.com/public-apis/public-apis/issues" target="_blank">Report Issues</a>
+                    <a href="https://discord.com/invite/hgjA78638n/" target="_blank">Discord</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 API Explorer. Data from <a href="https://github.com/public-apis/public-apis" target="_blank">public-apis/public-apis</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTop" class="scroll-top-btn" aria-label="Scroll to top">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 19V5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
