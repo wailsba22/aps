@@ -31,7 +31,7 @@ async function loadAPIData() {
     try {
         // For local file access, we'll embed the data directly
         // This avoids CORS issues with file:// protocol
-        const response = await fetch('../data/apis-database.json');
+        const response = await fetch('./data/apis-database.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -53,7 +53,22 @@ async function loadAPIData() {
         console.log('Categories rendered:', document.querySelectorAll('.category-card').length);
         console.log('API cards rendered:', document.querySelectorAll('.api-card').length);
     } catch (error) {
-        console.error('Error loading API data:', error);
+        console.error('❌ Error loading API data:', error);
+        console.error('Error details:', error.message);
+        
+        // Show user-friendly error message
+        if (apisGrid) {
+            apisGrid.innerHTML = `
+                <div style="grid-column: 1/-1; text-align: center; padding: 3rem;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">⚠️</div>
+                    <h2 style="color: #ef4444; margin-bottom: 1rem;">Failed to Load APIs</h2>
+                    <p style="color: #64748b; margin-bottom: 1rem;">Could not fetch data from: <code>./data/apis-database.json</code></p>
+                    <p style="color: #64748b; font-size: 0.875rem;">Error: ${error.message}</p>
+                    <p style="color: #64748b; font-size: 0.875rem; margin-top: 1rem;">Please make sure you're running a local server.</p>
+                </div>
+            `;
+        }
+        
         // Fallback: try to load from embedded data if fetch fails
         console.log('Trying fallback method...');
         loadEmbeddedData();
