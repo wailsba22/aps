@@ -31,7 +31,7 @@ async function loadAPIData() {
     try {
         // For local file access, we'll embed the data directly
         // This avoids CORS issues with file:// protocol
-        const response = await fetch('apis-database.json');
+        const response = await fetch('../data/apis-database.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }

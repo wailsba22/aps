@@ -1,0 +1,15 @@
+/* Debug overlay used to show load status counts on page */
+#debugOverlay {
+  position: fixed;
+  right: 12px;
+  bottom: 12px;
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  z-index: 9999;
+}
+#debugOverlay p{ margin: 0 0 6px 0; }
+#debugOverlay a { color: #ffd700; }
